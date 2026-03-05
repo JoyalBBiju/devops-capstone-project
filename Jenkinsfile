@@ -26,14 +26,14 @@ pipeline {
             }
         }
 
-        stage('Login to ECR') {
-            steps {
-                sh '''
-                aws ecr get-login-password --region $AWS_REGION | \
-                docker login --username AWS --password-stdin $ECR_REPO
-                '''
-            }
-        }
+    stage('Login to ECR') {
+    steps {
+        sh '''
+        aws ecr get-login-password --region $AWS_REGION | \
+        docker login --username AWS --password-stdin 021891571564.dkr.ecr.ap-south-1.amazonaws.com
+        '''
+    }
+}
 
         stage('Push Image') {
             steps {
