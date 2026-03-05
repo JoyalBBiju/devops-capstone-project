@@ -19,26 +19,3 @@ pipeline {
                 sh 'docker build -t devops-project .'
             }
         }
-
-        stage('Tag Image') {
-            steps {
-                sh 'docker tag devops-project:latest $ECR_REPO:latest'
-            }
-        }
-
-    stage('Login to ECR') {
-    steps {
-        sh '''
-        aws ecr get-login-password --region $AWS_REGION | \
-        docker login --username AWS --password-stdin 021891571564.dkr.ecr.ap-south-1.amazonaws.com
-        '''
-    }
-}
-
-        stage('Push Image') {
-            steps {
-                sh 'docker push $ECR_REPO:latest'
-            }
-        }
-    }
-}
