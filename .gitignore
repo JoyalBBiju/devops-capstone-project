@@ -1,2 +1,7 @@
 node_modules/
-*.swp
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+*.zip
+*.exe
+windows-amd64/

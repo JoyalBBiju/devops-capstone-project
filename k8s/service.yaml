@@ -1,19 +1,12 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Service
 metadata:
-  name: devops-project
+  name: devops-project-service
 spec:
-  replicas: 2
+  type: LoadBalancer
   selector:
-    matchLabels:
-      app: devops-project
-  template:
-    metadata:
-      labels:
-        app: devops-project
-    spec:
-      containers:
-      - name: devops-project
-        image: 021891571564.dkr.ecr.ap-south-1.amazonaws.com/devops-project:latest
-        ports:
-        - containerPort: 3000
+    app: devops-project
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
